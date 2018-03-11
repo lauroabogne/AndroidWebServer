@@ -55,18 +55,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
 
-
+        String stringPort = mPortEditText.getText().toString().trim();
 
         if(mServer ==null){
 
 
             mServer =  new Server(this,this);
 
+
+
         }
+
+
+
+
 
         if(view.getId() == R.id.start_server_btn){
 
-           mServer.startServer();
+            if(stringPort.length() >0 ){
+
+                mServer.startServer(Integer.parseInt(stringPort));
+
+            }else{
+
+
+                mServer.startServer();
+            }
+
+
 
         }else{
             mServer.stopServer();

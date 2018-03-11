@@ -38,6 +38,25 @@ public class Server implements Runnable {
         this.mServerListener = serverListener;
     }
 
+    public void startServer(int port){
+
+        mPort = port;
+
+        if(doServerRunning){
+            /**
+             * if server is running do nothing
+             */
+            return;
+        }
+        /**
+         * start thread to start server listening to client
+         */
+        doServerRunning = true;
+        new Thread(this).start();
+
+
+    }
+
     public void startServer(){
 
         if(doServerRunning){
